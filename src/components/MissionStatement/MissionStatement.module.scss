@@ -1,0 +1,21 @@
+.misssionStatement {
+  background-image: url("bannerimage1.jpg");
+  background-position: center 80%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 2vw;
+  margin: 2vw 0;
+  text-align: center;
+  color: white;
+
+  h1,
+  h3 {
+    margin: 2vw;
+    font-weight: 400;
+    text-shadow: rgb(32, 32, 32) 1px 0 10px;
+  }
+
+  h3 {
+    padding: 0 17vw;
+  }
+}

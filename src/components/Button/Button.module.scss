@@ -1,0 +1,36 @@
+@use '../../styles/variables' as *;
+//BaseStyling
+.buttonStyling{
+    border: none;
+    color: $white;
+    cursor: pointer;
+}
+
+
+//color
+.bluegreen{
+    background-color: $bluegreen;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.green{
+    background-color: green;
+}
+
+//size
+.small{
+    padding: 1vw 2vw;
+}
+
+.medium{
+    padding: 2vw 4vw;
+}
+
+.large{
+    padding: 4vw 8vw;
+}
+
+//CustomStyling

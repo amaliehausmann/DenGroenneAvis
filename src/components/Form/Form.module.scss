@@ -1,0 +1,11 @@
+@use '../../styles/variables' as *;
+.formStyling {
+  display: flex;
+}
+
+.newsletter{
+  background-color: $green;
+  border: none;
+  color: $white;
+  padding: 0.5vw 2vw;
+}

@@ -1,0 +1,53 @@
+@use "../../styles/variables" as *;
+
+//BaseStyling
+.cardStyling {
+  img {
+    width: 100%;
+  }
+
+  p {
+  }
+}
+
+//Custom Styling
+.randomProducts,
+.randomCategories {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    width: 100%;
+  }
+
+  h5 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 166, 118, 0.75);
+    color: $white;
+    font-weight: 400;
+    text-align: center;
+    padding: 0.8vw;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &:hover h5 {
+    opacity: 1;
+  }
+}
+
+.randomCategories h5 {
+  top: 0;
+  bottom: initial;
+  text-decoration: underline;
+}

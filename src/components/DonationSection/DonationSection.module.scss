@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+
+.donationSection{
+    color: white;
+    margin: 2vw 0;
+
+    h4, h6, h1{
+        font-weight: 400;
+        margin: 0.5vw 0;
+    }
+
+    h1{
+        color: $bluegreen;
+        text-align: right;
+    }
+
+    .donationOne{
+        background-image: url('banner_image2.jpg');
+        background-position: center;
+        background-size: cover;
+        padding: 2vw 4vw;
+    }
+
+    .donationTwo{
+        background-image: url('banner_image3.jpg');
+        background-position: center;
+        background-size: cover;
+        padding: 2vw 4vw;
+    }
+}

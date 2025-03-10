@@ -1,0 +1,57 @@
+@use "../../styles/variables" as *;
+
+.headerStyling {
+  display: flex;
+  justify-content: space-between;
+  background-color: $white;
+  padding: 2vw 6vw;
+  align-items: center;
+  
+
+  .heading {
+    cursor: pointer;
+    display: flex;
+    border: 2px solid $green;
+    h1{
+      font-weight: 400;
+      padding: 0 0.5vw;
+    }
+    h1:nth-of-type(1) {
+      background-color: $green;
+      color: white;
+    }
+
+    h1:nth-of-type(2) {
+      color: $green;
+    }
+  }
+
+  section{
+    display: flex;
+    gap: 2vw;
+
+    select{
+      border: 2px solid $bluegreen;
+      padding-right: 4vw;
+      padding-left: 0.5vw;
+      background-color: $lightgrey;
+    }
+
+    button{
+      padding: 1vw 2vw;
+
+      &:hover{
+        background-color: $green;
+      }
+    }
+
+    span{
+      display: flex;
+      gap: 1vw;
+
+      img{
+        width: 2vw;
+      }
+    }
+  }
+}
