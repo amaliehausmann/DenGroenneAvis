@@ -1,0 +1,61 @@
+import { Link } from "react-router-dom";
+import { useAPI } from "../../hooks/useAPI";
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
+export const ListingCard = ({
+  title,
+  price,
+  description,
+  imgSRC,
+  slug,
+  refetchData,
+  productId,
+}) => {
+  const { apiRequest: deleteListing } = useAPI();
+
+  const { userData } = useContext(UserContext);
+
+  async function deleteAListing(id) {
+    try {
+      await deleteListing(
+        `http://localhost:4242/products/${id}`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${userData?.access_token}` },
+        },
+        "Annonce slettet",
+        "Der skete en fejl, prøv igen senere"
+      );
+
+      refetchData();
+    } catch (error) {
+      console.error("Fejl under sletning", error);
+    }
+  }
+  return (
+    <div>
+      <div>
+        <div>
+          <span>
+            <h3>{title}</h3> <h3>Pris: {price} kr</h3>
+          </span>
+          <p>{description}</p>
+        </div>
+        <img style={{ width: "100%" }} src={imgSRC} alt="" />
+      </div>
+      <span>
+        <Link to={`/product/${slug}`}>Gå til annonce</Link>{" "}
+        <p
+          style={{
+            fontSize: "3vw",
+            textDecoration: "underline",
+            cursor: "pointer",
+          }}
+          onClick={() => deleteAListing(productId)}
+        >
+          Fjern annonce{" "}
+        </p>
+      </span>
+    </div>
+  );
+};
