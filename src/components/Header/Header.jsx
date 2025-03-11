@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
 import { IoMenu } from "react-icons/io5";
 import style from "./Header.module.scss";
 import { useAPI } from "../../hooks/useAPI";
 import { Button } from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/userContext";
+import { toast } from "react-toastify";
 
 export const Header = () => {
   //State til at holde styr på om children skal vises
@@ -32,6 +34,18 @@ export const Header = () => {
 
   const navigate = useNavigate();
 
+  //Trækker userData ud fra userContext
+  const { userData } = useContext(UserContext);
+
+  //Navigering til createPost
+  function navigateToCreate() {
+    if (userData) {
+      navigate("/createPost");
+    } else {
+      toast.error("Du skal være logget ind for at oprette en annonce");
+    }
+  }
+
   return (
     <header className={style.headerStyling}>
       {/* Hvis skærmstørrelsen er under 768px vil menu ikonet vises og children skjules  */}
@@ -53,37 +67,37 @@ export const Header = () => {
           </span>
 
           <section>
-          <select
-            style={{ cursor: "pointer" }}
-            onChange={(e) => navigate(`/categories/${e.target.value}`)}
-            value={""}
-          >
-            <option value="" disabled>
-              Vælg en kategori
-            </option>
-            {data?.data?.map((item) => (
-              <option key={item.id} value={item.slug}>
-                {item.name}
-              </option>
-            ))}
-          </select>
-
-          <Button
-            action={() => navigate("/createPost")}
-            title="Opret annonce"
-            color="bluegreen"
-          ></Button>
-
-          <span>
-            <img src="/importantMail.svg" alt="mail icon" />
-            <img src="/infosquare.svg" alt="info icon" />
-            <img
+            <select
               style={{ cursor: "pointer" }}
-              onClick={() => navigate("/login")}
-              src="/user.svg"
-              alt="user icon"
-            />
-          </span>
+              onChange={(e) => navigate(`/categories/${e.target.value}`)}
+              value={""}
+            >
+              <option value="" disabled>
+                Vælg en kategori
+              </option>
+              {data?.data?.map((item) => (
+                <option key={item.id} value={item.slug}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+
+            <Button
+              action={navigateToCreate}
+              title="Opret annonce"
+              color="bluegreen"
+            ></Button>
+
+            <span>
+              <img src="/importantMail.svg" alt="mail icon" />
+              <img src="/infosquare.svg" alt="info icon" />
+              <img
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate("/login")}
+                src="/user.svg"
+                alt="user icon"
+              />
+            </span>
           </section>
         </>
       )}

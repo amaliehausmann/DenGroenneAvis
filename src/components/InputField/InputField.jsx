@@ -11,15 +11,14 @@ export const InputField = ({
   options = [],
   imgSRC,
   custom,
+  selectPlaceholder,
 }) => {
   const defaultPlaceholder = placeholder || `Indtast ${label}`;
 
   // Hvis typen er checkbox
   if (type === "checkbox") {
     return (
-      <div
-        className={style.InputStyling}
-      >
+      <div className={style.InputStyling}>
         <input
           id={name}
           type="checkbox"
@@ -35,7 +34,7 @@ export const InputField = ({
   }
 
   // Hvis typen er hverken radio, select eller checkbox
-  if (type !== "radio" && type !== "select" && type !== 'checkbox') {
+  if (type !== "radio" && type !== "select" && type !== "checkbox") {
     return (
       <div
         className={`${style.InputStyling} ${style[custom]}`}
@@ -103,7 +102,8 @@ export const InputField = ({
             border: error ? "1px solid orange" : "1px solid #ccc",
           }}
         >
-          <option value="">Vælg {label}</option>
+          <option value="">{selectPlaceholder || `Vælg ${label}`}</option>
+
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}

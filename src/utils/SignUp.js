@@ -35,7 +35,7 @@ export const signUpForm = [
           },
           pattern: {
             value: /^[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*$/,
-            message: "Fornavn må ikke indeholde bogstaver",
+            message: "Fornavn må ikke indeholde tal",
           },
         },
       },
