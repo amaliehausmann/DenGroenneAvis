@@ -3,6 +3,7 @@ import { useAPI } from "../hooks/useAPI";
 import { useNavigate, useParams } from "react-router-dom";
 import { GridContainer } from "../components/GridContainer/GridContainer";
 import { Card } from "../components/Card/Card";
+import { SectionWrapper } from "../components/SectionWrapper/SectionWrapper";
 
 export const CategoryPage = () => {
   const { slug } = useParams();
@@ -27,40 +28,49 @@ export const CategoryPage = () => {
 
   //Henter produkter ud fra kategorien
   useEffect(() => {
-    getProductsFromCategory(productsFromCategoryURL,{},'', 'Ingen produkter i denne kategori, vælg en anden');
+    getProductsFromCategory(
+      productsFromCategoryURL,
+      {},
+      "",
+      "Ingen produkter i denne kategori, vælg en anden"
+    );
   }, [productsFromCategoryURL]);
 
-  console.log(categoryData);
   return (
     <>
-      <GridContainer columns={2}>
-        <aside>
-          Alle kategorier
-          <ul>
-            {categoryData?.data?.map((item) => (
-              <li
-                style={{ cursor: "pointer" }}
-                onClick={() => navigate(`/categories/${item.slug}`)}
-              >
-                {item.name}
-              </li>
-            ))}
-          </ul>
-        </aside>
-        <section>
-          <GridContainer columns={3}>
-            {productsFromCategoryData?.data.map((item) => (
-              <Card
-                title={item.name}
-                image={item.image}
-                description={item.description}
-              >
-                <h5>Pris: {item.price} kr</h5>
-              </Card>
-            ))}
-          </GridContainer>
-        </section>
-      </GridContainer>
+      <SectionWrapper>
+        <GridContainer columns={2}>
+          <aside>
+            Alle kategorier
+            <ul>
+              {categoryData?.data?.map((item) => (
+                <li
+                style={{
+                  cursor: "pointer",
+                  fontWeight: slug === item.slug ? "900" : "400",
+                }}
+                  onClick={() => navigate(`/categories/${item.slug}`)}
+                >
+                  {item.name}
+                </li>
+              ))}
+            </ul>
+          </aside>
+          <section>
+            <GridContainer columns={3}>
+              {productsFromCategoryData?.data.map((item) => (
+                <Card
+                  title={item.name}
+                  image={item.image}
+                  description={item.description}
+                >
+                  <h5>Pris: {item.price} kr</h5>
+                </Card>
+              ))}
+            </GridContainer>
+          </section>
+        </GridContainer>
+      </SectionWrapper>
     </>
   );
 };
