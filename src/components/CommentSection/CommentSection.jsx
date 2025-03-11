@@ -73,14 +73,14 @@ export const CommentSection = ({
       {userData && (
         <>
           <h2>
-            Kontakt {productUserId === userData.user.id ? "sælger" : "køber"}
+            Kontakt {productUserId == userData.user.id ? "køber" : "sælger"}
           </h2>
 
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder={`Skriv en besked til ${
-              productUserId === userData.user.id ? "sælger" : "køber"
+              productUserId == userData.user.id ? "køber" : "sælger"
             }`}
           ></textarea>
           <Button
