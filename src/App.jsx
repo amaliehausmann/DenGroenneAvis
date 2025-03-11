@@ -6,6 +6,7 @@ import { Login } from "./pages/Login";
 import { Frontpage } from "./pages/Frontpage";
 import { CreatePost } from "./pages/CreatePost";
 import { CategoryPage } from "./pages/CategoryPage";
+import { ProductPage } from "./pages/ProductPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/login" element={<Login/>}></Route>
             <Route path="/createPost" element={<CreatePost/>}></Route>
             <Route path="/categories/:slug" element={<CategoryPage/>}></Route>
+            <Route path="/product/:slug" element={<ProductPage/>}></Route>
             </Route>
           </Routes>
         </BrowserRouter>

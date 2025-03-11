@@ -40,6 +40,7 @@ export const useAPI = () => {
           items: prevData.items.filter((item) => item.id !== result.id),
         }));
       }
+      
 
       //Hvis result indeholder en accesstoken settes userData til dette
       if (result.data.access_token) {

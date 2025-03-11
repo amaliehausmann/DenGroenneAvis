@@ -41,6 +41,7 @@ export const CategoryPage = () => {
             <GridContainer columns={3}>
               {productsFromCategoryData?.data.map((item) => (
                 <Card
+                  action={() => navigate(`/product/${item.slug}`)}
                   key={item.id}
                   title={item.name}
                   image={item.image}
