@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { GridContainer } from "../components/GridContainer/GridContainer";
 import { Card } from "../components/Card/Card";
 import { SectionWrapper } from "../components/SectionWrapper/SectionWrapper";
+import { CategoryMenu } from "../components/CategoryMenu/CategoryMenu";
 
 export const CategoryPage = () => {
   const { slug } = useParams();
@@ -21,11 +22,6 @@ export const CategoryPage = () => {
   const categoryURL = "http://localhost:4242/categories";
   const productsFromCategoryURL = `http://localhost:4242/products/category/${slug}`;
 
-  //Henter kategorier
-  useEffect(() => {
-    getCategories(categoryURL);
-  }, [categoryURL]);
-
   //Henter produkter ud fra kategorien
   useEffect(() => {
     getProductsFromCategory(
@@ -40,26 +36,12 @@ export const CategoryPage = () => {
     <>
       <SectionWrapper>
         <GridContainer columns={2}>
-          <aside>
-            Alle kategorier
-            <ul>
-              {categoryData?.data?.map((item) => (
-                <li
-                style={{
-                  cursor: "pointer",
-                  fontWeight: slug === item.slug ? "900" : "400",
-                }}
-                  onClick={() => navigate(`/categories/${item.slug}`)}
-                >
-                  {item.name}
-                </li>
-              ))}
-            </ul>
-          </aside>
+          <CategoryMenu slug={slug} />
           <section>
             <GridContainer columns={3}>
               {productsFromCategoryData?.data.map((item) => (
                 <Card
+                  key={item.id}
                   title={item.name}
                   image={item.image}
                   description={item.description}
