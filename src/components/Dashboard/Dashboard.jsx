@@ -4,6 +4,7 @@ import { GridContainer } from "../GridContainer/GridContainer";
 import { ListingCard } from "../ListingCard/ListingCard";
 import { UserContext } from "../../context/userContext";
 import { useAPI } from "../../hooks/useAPI";
+import { UpdateUser } from "../UpdateUser/UpdateUser";
 
 export const Dashboard = () => {
   const { userData } = useContext(UserContext);
@@ -38,6 +39,7 @@ export const Dashboard = () => {
             <ListingCard title={item.name} price={item.price} description={item.description} imgSRC={item.image} slug={item.slug} refetchData={refetchData} productId={item.id}/>
         ))}
         </section>
+        <UpdateUser listingData={listingData?.data}/>
       </GridContainer>
     </section>
   );
