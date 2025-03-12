@@ -100,7 +100,7 @@ export const InputField = ({
           id={name}
           {...register(name, validation)}
           style={{
-            border: error ? "1px solid orange" : "1px solid #ccc",
+            border: error ? "1px solid orange" : "",
           }}
         >
           <option value="">{selectPlaceholder || `Vælg ${label}`}</option>

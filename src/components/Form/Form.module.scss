@@ -83,3 +83,26 @@
 
 
 }
+
+.listingForm{
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 5vw;
+
+  select{
+    border: 2px solid $green;
+    padding: 1vw;
+    width: 100%;
+    background-color: #EDECEC;
+  }
+
+  .listingButton{
+    background-color: $green;
+    color: white;
+    margin-left: auto;
+    display: block;
+    padding: 1vw 4vw;
+    border: none;
+    margin-top: 1vw;
+  }
+}

@@ -4,6 +4,7 @@ import { useAPI } from "../../hooks/useAPI";
 import { listingForm } from "../../utils/ListingForm";
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
+import style from './CreateListing.module.scss'
 
 export const CreateListing = () => {
   //Henter function og data fra useAPI()
@@ -84,7 +85,7 @@ export const CreateListing = () => {
   }
 
   return (
-    <div>
+    <div className={style.createListing}>
       <h1>Opret ny annonce</h1>
       <h5>Her kan du oprette en ny annonce.</h5>
       <h5>
@@ -94,8 +95,11 @@ export const CreateListing = () => {
       <Form
         formArray={updatedForm}
         selectPlaceholder="Hvilken kategori tilhører dit produkt..."
-        buttonText="Opret annonce"
+        buttonText="Opret"
         callback={postListing}
+        customForm='listingForm'
+        custom='listingInput'
+        customButton='listingButton'
       />
     </div>
   );
