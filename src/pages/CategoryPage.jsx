@@ -12,7 +12,6 @@ export const CategoryPage = () => {
   const navigate = useNavigate();
 
   //Functions og data fra useAPI
-  const { apiRequest: getCategories, data: categoryData } = useAPI();
   const {
     apiRequest: getProductsFromCategory,
     data: productsFromCategoryData,
@@ -39,7 +38,7 @@ export const CategoryPage = () => {
           <CategoryMenu slug={slug} />
           <section>
             <GridContainer columns={3}>
-              {productsFromCategoryData?.data.map((item) => (
+              {productsFromCategoryData?.data?.map((item) => (
                 <Card
                   action={() => navigate(`/product/${item.slug}`)}
                   key={item.id}

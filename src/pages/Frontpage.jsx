@@ -56,6 +56,7 @@ export const Frontpage = () => {
                 image={item.image}
                 title={item.name}
                 custom="randomProducts"
+                action={()=> navigate(`/product/${item.slug}`)}
               ></Card>
             ))}
           </GridContainer>
