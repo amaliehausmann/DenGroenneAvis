@@ -1,0 +1,60 @@
+@use '../../styles/variables' as *;
+.listingCard{
+    margin-bottom: 2vw;
+
+    div{
+        display: grid;
+        grid-template-columns: 6fr 1fr;
+        gap: 1vw;
+        background-color: $white;
+        padding: 1vw;
+        border: 2px solid #1D843980;
+
+        div{
+            display: flex;
+            flex-direction: column;
+            border: none;
+            
+            span{
+                display: flex;
+                justify-content: space-between;
+                background-color: $green;
+                color: white;
+                padding-left: 1vw;
+                padding-right: 1vw;
+                margin-top: -1vw;
+
+
+                h3{
+                    font-weight: 300;
+                }
+            }
+
+            p{
+                width: 50%;
+            }
+
+        }
+
+        img{
+            object-fit: cover;
+            height: 100%;
+            aspect-ratio: 1/1;
+        }
+    }
+
+    span{
+        display: flex;
+        justify-content: flex-end;
+        gap: 1vw;
+        margin-top: 1vw;
+        p{
+            color: #952E0D;
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    }
+}

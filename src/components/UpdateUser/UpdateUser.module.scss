@@ -1,0 +1,88 @@
+.updateUser {
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vw;
+    padding-bottom: 5vw;
+
+    div {
+      position: relative;
+      span {
+        display: flex;
+        margin-bottom: 1vw;
+
+        input {
+          width: 100%;
+          padding: 1vw;
+          border: 2px solid #1d843980;
+          background-color: #edecec;
+        }
+      }
+
+      .bottomButtons {
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+        margin-bottom: 0;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        button {
+          display: block;
+          background-color: #952e0d;
+          color: white;
+          border: none;
+          margin-left: auto;
+          padding: 1vw;
+          width: 10vw;
+          cursor: pointer;
+        }
+
+        input {
+          display: block;
+          margin-left: auto;
+          background-color: #1d8439;
+          color: white;
+          border: none;
+          padding: 1vw;
+          cursor: pointer;
+        }
+      }
+
+      div {
+        margin-top: 1vw;
+
+        div {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 2vw;
+
+          input {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 24px;
+            height: 24px;
+            aspect-ratio: 1/1;
+            border: 2px solid green;
+
+            cursor: pointer;
+            position: relative;
+            background-color: white;
+            margin-left: 1vw;
+
+            &:checked {
+              background-color: green;
+            }
+
+            &:checked::before {
+              content: "";
+            }
+          }
+        }
+      }
+    }
+  }
+}

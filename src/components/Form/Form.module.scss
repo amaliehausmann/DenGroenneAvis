@@ -1,33 +1,36 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
+
 .formStyling {
   display: flex;
 }
 
-.newsletter{
+.newsletter {
   background-color: $green;
   border: none;
   color: $white;
   padding: 0.5vw 2vw;
 }
 
-.login{
+.login,
+.signup {
   flex-direction: column;
-  align-items: center;
   position: relative;
-  padding-bottom: 4vw;
+  padding-bottom: 6vw;
+  margin-bottom: 2vw;
 
-  h5{
+  h5 {
     align-self: flex-start;
     font-weight: 400;
 
-    span{
+    span {
       text-decoration: underline;
       color: $bluegreen;
     }
   }
 }
 
-.loginButton{
+.loginButton,
+.signupButton {
   padding: 0.5vw 2.5vw;
   background-color: $green;
   border: none;
@@ -37,66 +40,50 @@
   bottom: 0;
 }
 
+.signup div:last-of-type {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  display: flex;
+  align-items: center;
 
-.signup{
-  flex-direction: column;
-  position: relative;
-  padding-bottom: 4vw;
+  input {
+    appearance: none;
+    width: 1.5vw;
+    height: 1.5vw;
+    aspect-ratio: 1/1;
+    border: 2px solid green;
+    background-color: white;
+    cursor: pointer;
+    margin-right: 1vw !important;
 
-  h5{
-    align-self: flex-start;
-    font-weight: 400;
-    margin: 2vw 0;
-
-    span{
-      text-decoration: underline;
-      color: $bluegreen;
+    &:checked {
+      background-color: green;
     }
   }
 
-  div:last-of-type{
-
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 80%;
-    input{
-      height: 2vw;
-    }
-
-    p{
-      margin-bottom: -1.5vw;
-      margin-left: 1vw;
-    }
+  p {
+    margin-bottom: -1.5vw;
+    margin-left: 2.5vw;
+    display: block;
+    margin-right: auto;
   }
-
-  .signupButton{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background-color: $green;
-    padding: 0.5vw 2vw;
-    border: none;
-    color: $white;
-
-  }
-
-
 }
 
-.listingForm{
+.listingForm {
   flex-direction: column;
   justify-content: center;
   padding-bottom: 5vw;
 
-  select{
+  select {
     border: 2px solid $green;
     padding: 1vw;
     width: 100%;
-    background-color: #EDECEC;
+    background-color: #edecec;
   }
 
-  .listingButton{
+  .listingButton {
     background-color: $green;
     color: white;
     margin-left: auto;

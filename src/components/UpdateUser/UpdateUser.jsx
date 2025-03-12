@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "../../context/userContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import style from "./UpdateUser.module.scss";
 
 export const UpdateUser = ({ listingData }) => {
   //Henter de nødvendige states og functions fra react-hook-form
@@ -52,7 +53,6 @@ export const UpdateUser = ({ listingData }) => {
   const navigate = useNavigate();
 
   async function deleteCurrentUser() {
-
     try {
       await deleteUser(
         "http://localhost:4242/users",
@@ -63,23 +63,21 @@ export const UpdateUser = ({ listingData }) => {
         "Bruger er nu slettet",
         "Der skete en fejl, prøv igen senere"
       );
-        setUserData('');
-        sessionStorage.removeItem('userData');
-        navigate('/')
-        toast.info('Profil slettet')
-      
+      setUserData("");
+      sessionStorage.removeItem("userData");
+      navigate("/");
+      toast.info("Profil slettet");
     } catch (error) {
       console.error("Fejl i sletning af bruger", error);
     }
   }
 
-  console.log(userData)
+  console.log(userData);
 
   return (
-    <section>
+    <section className={style.updateUser}>
       {listingData && (
         <form
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
           onSubmit={handleSubmit(updateUserInfo)}
         >
           <div>
@@ -110,8 +108,12 @@ export const UpdateUser = ({ listingData }) => {
                 error={errors[item.name]}
               />
             ))}
-            <button onClick={deleteCurrentUser} type="button">slet profil</button>
+            <span className={style.bottomButtons}>
+            <button onClick={deleteCurrentUser} type="button">
+              slet profil
+            </button>
             <input type="submit" value="gem ændringer" />
+            </span>
           </div>
         </form>
       )}

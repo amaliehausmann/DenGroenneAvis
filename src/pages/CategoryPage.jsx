@@ -46,7 +46,7 @@ export const CategoryPage = () => {
                   key={item.id}
                   title={item.name}
                   image={item.image}
-                  description={item.description}
+                  description={item.description.substring(0, 50)+'...'}
                   custom='categoryPage'
                 >
                   <h5>Pris: {item.price} kr</h5>

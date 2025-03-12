@@ -1,0 +1,15 @@
+@use '../../styles/variables' as *;
+.dashBoard{
+    .buttons{
+        width: 100%;
+        display: flex;
+        button{
+            width: 100%;
+            border: 2px solid $green;
+            padding: 1vw;
+            font-size: 1.5vw;
+        }
+        padding-bottom: 5vw;
+        padding-top: 3vw;
+    }
+}

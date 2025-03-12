@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useAPI } from "../../hooks/useAPI";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
+import style from './ListingCard.module.scss'
+
 export const ListingCard = ({
   title,
   price,
@@ -33,7 +35,7 @@ export const ListingCard = ({
     }
   }
   return (
-    <div>
+    <div className={style.listingCard}>
       <div>
         <div>
           <span>
@@ -47,8 +49,6 @@ export const ListingCard = ({
         <Link to={`/product/${slug}`}>Gå til annonce</Link>{" "}
         <p
           style={{
-            fontSize: "3vw",
-            textDecoration: "underline",
             cursor: "pointer",
           }}
           onClick={() => deleteAListing(productId)}

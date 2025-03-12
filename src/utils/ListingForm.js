@@ -26,6 +26,7 @@ export const listingForm = [
     validation: {
       required: "Beskrivelse er påkrævet",
       minLength: { value: 10, message: "Beskrivelse skal være mindst 10 tegn" },
+      maxLength: { value: 250, message: "Beskrivelse må max være 250 tegn" }
     },
   },
   {
