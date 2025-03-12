@@ -4,6 +4,8 @@ import { updateUserForm, updateUserForm2 } from "../../utils/UpdateUserForm";
 import { InputField } from "../InputField/InputField";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../context/userContext";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const UpdateUser = ({ listingData }) => {
   //Henter de nødvendige states og functions fra react-hook-form
@@ -17,7 +19,7 @@ export const UpdateUser = ({ listingData }) => {
   });
 
   //Henter userData
-  const { userData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
 
   //Henter function fra useAPI()
   const { apiRequest: updateUser } = useAPI();
@@ -45,45 +47,74 @@ export const UpdateUser = ({ listingData }) => {
     );
   }
 
+  const { apiRequest: deleteUser } = useAPI();
+
+  const navigate = useNavigate();
+
+  async function deleteCurrentUser() {
+
+    try {
+      await deleteUser(
+        "http://localhost:4242/users",
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${userData?.access_token}` },
+        },
+        "Bruger er nu slettet",
+        "Der skete en fejl, prøv igen senere"
+      );
+        setUserData('');
+        sessionStorage.removeItem('userData');
+        navigate('/')
+        toast.info('Profil slettet')
+      
+    } catch (error) {
+      console.error("Fejl i sletning af bruger", error);
+    }
+  }
+
+  console.log(userData)
+
   return (
     <section>
-      <form
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
-        onSubmit={handleSubmit(updateUserInfo)}
-      >
-        <div>
-          {updateUserForm?.map((item) => (
-            <InputField
-              key={item.name}
-              name={item.name}
-              label={item.label}
-              type={item.type}
-              placeholder={item.placeholder}
-              register={register}
-              validation={item.validation}
-              error={errors[item.name]}
-              defaultValue={listingData?.[item.name]}
-            />
-          ))}
-        </div>
-        <div>
-          {updateUserForm2?.map((item) => (
-            <InputField
-              key={item.name}
-              name={item.name}
-              label={item.label}
-              type={item.type}
-              placeholder={item.placeholder}
-              register={register}
-              validation={item.validation}
-              error={errors[item.name]}
-              defaultValue={listingData?.[item.name] || false}
-            />
-          ))}
-          <button type="button">slet profil</button>
-          <input type="submit" value="gem ændringer" />
-        </div>
-      </form>
+      {listingData && (
+        <form
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
+          onSubmit={handleSubmit(updateUserInfo)}
+        >
+          <div>
+            {updateUserForm?.map((item) => (
+              <InputField
+                key={item.name}
+                name={item.name}
+                label={item.label}
+                type={item.type}
+                placeholder={item.placeholder}
+                register={register}
+                validation={item.validation}
+                error={errors[item.name]}
+                defaultValue={listingData?.[item.name]}
+              />
+            ))}
+          </div>
+          <div>
+            {updateUserForm2?.map((item) => (
+              <InputField
+                key={item.name}
+                name={item.name}
+                label={item.label}
+                type={item.type}
+                placeholder={item.placeholder}
+                register={register}
+                validation={item.validation}
+                error={errors[item.name]}
+              />
+            ))}
+            <button onClick={deleteCurrentUser} type="button">slet profil</button>
+            <input type="submit" value="gem ændringer" />
+          </div>
+        </form>
+      )}
     </section>
   );
 };

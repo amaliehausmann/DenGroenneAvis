@@ -31,22 +31,12 @@ export const useAPI = () => {
       }
 
       const result = await response.json();
-
-      //Hvis det er en succesfuld sletning så opdateres viewet med det samme
-      if (result.message === "Record deleted") {
-        //Sletter det valgte item fra viewet ved at kopiere (spread-operator) det gamle array og filtrere
-        setData((prevData) => ({
-          ...prevData,
-          items: prevData.items.filter((item) => item.id !== result.id),
-        }));
-      }
       
 
       //Hvis result indeholder en accesstoken settes userData til dette
       if (result.data.access_token) {
         setUserData(result.data);
       }
-
       //Hvis det lykkes vises en successMessage
       setData(result);
       if (successMessage !== "") {

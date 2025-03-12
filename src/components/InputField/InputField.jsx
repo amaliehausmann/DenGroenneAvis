@@ -12,7 +12,7 @@ export const InputField = ({
   imgSRC,
   custom,
   selectPlaceholder,
-  defaultValue
+  defaultValue,
 }) => {
   const defaultPlaceholder = placeholder || `Indtast ${label}`;
 
@@ -21,7 +21,6 @@ export const InputField = ({
     return (
       <div className={style.InputStyling}>
         <input
-          defaultChecked={defaultValue}
           id={name}
           type="checkbox"
           {...register(name, validation)}
