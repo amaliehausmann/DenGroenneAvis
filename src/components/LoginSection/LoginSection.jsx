@@ -4,6 +4,8 @@ import { Form } from "../Form/Form";
 import { useState } from "react";
 import { signUpForm } from "../../utils/SignUp";
 import { DonationSection } from "../DonationSection/DonationSection";
+import { Splitter } from "../Splitter/Splitter";
+import style from './LoginSection.module.scss'
 
 export const LoginSection = () => {
   //state der styrer om signup vises
@@ -57,10 +59,11 @@ export const LoginSection = () => {
 
   return (
     <>
+    <Splitter/>
       {signUpOpen ? (
-        <section>
+        <section className={style.signUp}>
           <h2>Opret en konto</h2>
-          <Form formArray={signUpForm} callback={signUp} buttonText="Opret" />
+          <Form formArray={signUpForm} callback={signUp} buttonText="Opret" custom='signupInput' customForm='signup'  customButton='signupButton'>
           <h5>
             Har du allerede en konto hos os? Klik{" "}
             <span onClick={toggleView} style={{ cursor: "pointer" }}>
@@ -68,11 +71,12 @@ export const LoginSection = () => {
             </span>{" "}
             for at vende tilbage til login
           </h5>
+          </Form>
         </section>
       ) : (
-        <section>
+        <section className={style.loginSection}>
           <h2>Velkommen tilbage</h2>
-          <Form formArray={loginForm} callback={logIn} />
+          <Form formArray={loginForm} callback={logIn} custom='loginInput' customForm='login' customButton='loginButton' buttonText='Login' >
           <h5>
             Har du ikke allerede en konto? Klik{" "}
             <span onClick={toggleView} style={{ cursor: "pointer" }}>
@@ -80,8 +84,11 @@ export const LoginSection = () => {
             </span>{" "}
             for at gå til sign up
           </h5>
+          </Form>
         </section>
+
       )}
+      <Splitter/>
       <DonationSection/>
     </>
   );

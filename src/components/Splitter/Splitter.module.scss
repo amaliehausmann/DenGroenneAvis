@@ -1,0 +1,8 @@
+@use '../../styles/variables' as *;
+
+.splitter{
+    width: 100%;
+    height: 4px;
+    background-color: $green;
+    margin: 2vw 0;
+}

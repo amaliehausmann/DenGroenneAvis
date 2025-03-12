@@ -6,6 +6,7 @@ import { Card } from "../components/Card/Card";
 import { MissionStatement } from "../components/MissionStatement/MissionStatement";
 import { DonationSection } from "../components/DonationSection/DonationSection";
 import { useNavigate } from "react-router-dom";
+import { Splitter } from "../components/Splitter/Splitter";
 
 export const Frontpage = () => {
   //data og function fra useAPI
@@ -41,14 +42,9 @@ export const Frontpage = () => {
   return (
     <>
       <SectionWrapper>
-        <section
-          style={{
-            borderTop: "4px solid green",
-            borderBottom: "4px solid green",
-            paddingBottom: "2vw",
-          }}
-        >
-          <h3 style={{ margin: "2vw 0 1vw 0" }}>Udvalgte Produkter</h3>
+        <Splitter />
+        <section>
+          <h3 style={{ marginBottom: "1vw" }}>Udvalgte Produkter</h3>
           <GridContainer columns={6} gap={2}>
             {sixRandomProducts?.map((item) => (
               <Card
@@ -56,22 +52,19 @@ export const Frontpage = () => {
                 image={item.image}
                 title={item.name}
                 custom="randomProducts"
-                action={()=> navigate(`/product/${item.slug}`)}
+                action={() => navigate(`/product/${item.slug}`)}
               ></Card>
             ))}
           </GridContainer>
         </section>
+        <Splitter />
 
         <MissionStatement />
-
+        <Splitter />
         <section
-          style={{
-            borderTop: "4px solid green",
-            borderBottom: "4px solid green",
-            paddingBottom: "2vw",
-          }}
+
         >
-          <h3 style={{ margin: "2vw 0 1vw 0" }}>Populære Kategorier</h3>
+          <h3 style={{ marginBottom: "1vw" }}>Populære Kategorier</h3>
           <GridContainer columns={6} gap={2}>
             {sixRandomCategories?.map((item) => (
               <Card
@@ -84,7 +77,7 @@ export const Frontpage = () => {
             ))}
           </GridContainer>
         </section>
-
+        <Splitter />
         <DonationSection />
       </SectionWrapper>
     </>

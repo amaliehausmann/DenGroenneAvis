@@ -19,17 +19,17 @@ export const InputField = ({
   // Hvis typen er checkbox
   if (type === "checkbox") {
     return (
-      <div className={style.InputStyling}>
+      <div style={{display: 'flex', flexDirection: 'column'}} className={style.InputStyling}>
+        <div style={{display: 'flex'}}>
         <input
           id={name}
           type="checkbox"
           {...register(name, validation)}
-          style={{
-            border: error ? "1px solid orange" : "1px solid #ccc",
-          }}
+          style={{marginRight: '0.5vw'}}
         />
         <label htmlFor={name}>{label}</label>
-        {error && <p style={{ color: "orange" }}>{error.message}</p>}
+        </div>
+        {error && <p style={{ color: "orange", marginTop: '0.5vw' }}>{error.message}</p>}
       </div>
     );
   }
@@ -37,23 +37,22 @@ export const InputField = ({
   // Hvis typen er hverken radio, select eller checkbox
   if (type !== "radio" && type !== "select" && type !== "checkbox") {
     return (
-      <div
-        className={`${style.InputStyling} ${style[custom]}`}
-        style={{ display: "flex", flexDirection: "column" }}
-      >
+      <div className={`${style.InputStyling} ${style[custom]}`}>
         <label htmlFor={name}>{label}</label>
-        <input
-          defaultValue={defaultValue} 
-          id={name}
-          placeholder={defaultPlaceholder}
-          type={type}
-          autoComplete="on"
-          {...register(name, validation)}
-          style={{
-            border: error ? "1px solid orange" : "1px solid #ccc",
-          }}
-        />
-        <img src={imgSRC} alt="" />
+        <span>
+          <input
+            defaultValue={defaultValue}
+            id={name}
+            placeholder={defaultPlaceholder}
+            type={type}
+            autoComplete="on"
+            {...register(name, validation)}
+            style={{
+              border: error ? "2px solid orange" : "",
+            }}
+          />
+          <img src={imgSRC} alt="" />
+        </span>
         {error && <p style={{ color: "orange" }}>{error.message}</p>}
       </div>
     );
