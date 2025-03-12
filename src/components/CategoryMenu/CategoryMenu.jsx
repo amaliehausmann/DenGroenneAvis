@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAPI } from "../../hooks/useAPI";
 import { useEffect } from "react";
+import style from './CategoryMenu.module.scss'
 
 export const CategoryMenu = ({ slug, categoryId }) => {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ export const CategoryMenu = ({ slug, categoryId }) => {
     }, [categoryURL]);
   
     return (
-      <aside>
+      <aside className={style.categoryMenu}>
         <h3>Alle kategorier</h3>
         <ul>
           {categoryData?.data?.map((item) => {

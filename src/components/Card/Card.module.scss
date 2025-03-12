@@ -5,9 +5,6 @@
   img {
     width: 100%;
   }
-
-  p {
-  }
 }
 
 //Custom Styling
@@ -50,4 +47,60 @@
   top: 0;
   bottom: initial;
   text-decoration: underline;
+}
+
+.categoryPage{
+  cursor: pointer;
+  margin-bottom: 2.5vw;
+  position: relative;
+  img{
+    object-fit: cover;
+    height: 100%;
+    aspect-ratio: 1/1;
+  }
+
+  div{
+    background-color: rgba(0, 166, 118, 0.75);
+    height: 20%;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    opacity: 0;
+    display: flex;
+
+
+    h5{
+      color: $white;
+      margin-left: 1vw;
+      font-weight: 400;
+    }
+    align-items: center;
+  }
+
+  &:hover{
+    div{
+      opacity: 1;
+      transition: all 200ms ease-in-out;
+    }
+  }
+}
+
+.singleProduct{
+  padding-left: 0;
+  padding-right: 15vw;
+  img{
+    height: 80%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+  }
+
+  h5{
+    font-size: 3vw;
+    padding: 1vw 0;
+  }
+
+  h3{
+    padding-top: 2vw;
+    font-weight: 700;
+  }
 }

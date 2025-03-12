@@ -69,30 +69,32 @@ export const CommentSection = ({
   }
 
   return (
-    <section>
-      {userData && (
+    <section className={style.commentSection}>
+      {userData ? (
         <>
           <h2>
             Kontakt {productUserId == userData.user.id ? "køber" : "sælger"}
           </h2>
 
-          <textarea
+         <div className={style.textArea}>
+         <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder={`Skriv en besked til ${
               productUserId == userData.user.id ? "køber" : "sælger"
-            }`}
+            }...`}
           ></textarea>
           <Button
             title="send"
-            color="bluegreen"
             action={() => createComment(productId)}
           />
+         </div>
         </>
-      )}
+      ) : ( <h2>Kommentarer</h2> )}
       <section>
         {commentData?.map((item) => (
-          <div
+          <div className={style.displayComments}>
+            <div
             className={
               productUserId === item.user_id ? style.left : style.right
             }
@@ -100,20 +102,18 @@ export const CommentSection = ({
           >
             <h6>
               {productUserId === item.user_id
-                ? item.user.firstname + "(Sælger)"
-                : item.user.firstname}{" "}
+                ? item.user.firstname + " (Sælger)"
+                : item.user.firstname}:{" "}
               {formatDate(item.createdAt)}
             </h6>
-            <span>{item.comment}</span>
+            <span><p>{item.comment}</p></span>
             {item.user.id == userData?.user?.id && (
-              <Button
-                title="Slet"
-                size="large"
-                color="blue"
-                action={() => deleteAComment(item.id)}
-              />
+              <button onClick={() => deleteAComment(item.id)}>
+                slet kommentar
+              </button>
             )}
           </div>
+          </div>             
         ))}
       </section>
     </section>

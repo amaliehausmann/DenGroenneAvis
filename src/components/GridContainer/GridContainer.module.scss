@@ -26,8 +26,9 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-.column-8 {
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+.column-13 {
+  grid-template-columns: 1fr 5fr;
+  margin: 4vw 8vw;
 }
 
 .column-414{

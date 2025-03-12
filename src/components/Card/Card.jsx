@@ -6,7 +6,9 @@ export const Card = ({image, title, description, children, custom, action}) => {
         <img src={`${image}`} alt="" />
         <h5>{title}</h5>
         <p>{description}</p>
+        <div>
         {children}
+        </div>
     </div>
   )
 }

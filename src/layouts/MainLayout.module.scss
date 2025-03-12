@@ -14,6 +14,9 @@
     h1{
         font-size: 2.5vw;
     }
+    h2{
+        font-size: 2.2vw;
+    }
 
     h3{
         font-size: 1.6vw;
@@ -29,7 +32,7 @@
     }
     
 
-    h5, button, select, option, input, p{
+    h5, button, select, option, input, p, li, ::placeholder{
         font-size: 0.9vw;
     }
 }

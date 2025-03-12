@@ -6,6 +6,7 @@ import { useAPI } from "../hooks/useAPI";
 import { useEffect } from "react";
 import { Card } from "../components/Card/Card";
 import { CommentSection } from "../components/CommentSection/CommentSection";
+import { Splitter } from "../components/Splitter/Splitter";
 
 export const ProductPage = () => {
   const { slug } = useParams();
@@ -25,7 +26,8 @@ export const ProductPage = () => {
 
   return (
     <SectionWrapper>
-      <GridContainer columns={2} gap={2}>
+      <Splitter/>
+      <GridContainer columns={13} gap={2}>
         <CategoryMenu categoryId={item?.category_id} />
         {item && (
           <Card
@@ -38,6 +40,7 @@ export const ProductPage = () => {
           </Card>
         )}
       </GridContainer>
+      <Splitter/>
       <CommentSection
         user="Sælger"
         commentData={item?.comments}
