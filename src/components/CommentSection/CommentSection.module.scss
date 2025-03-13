@@ -4,7 +4,8 @@
 .commentSection {
   padding: 2vw 10vw;
 
-  h2, h3 {
+  h2,
+  h3 {
     text-align: center;
     color: $green;
     font-weight: 500;
@@ -58,15 +59,24 @@
         background-color: transparent;
         border: none;
         color: #952e0d;
+        display: block;
+        margin-top: 0.5vw;
       }
     }
 
     .right {
       margin-left: auto;
+
+      button {
+        margin-left: auto;
+      }
     }
 
     .left {
       margin-right: auto;
+      button {
+        margin-right: auto;
+      }
     }
   }
 
