@@ -11,6 +11,7 @@ export const Form = ({
   customForm,
   customButton,
   selectPlaceholder,
+  ariaLabel
 }) => {
   const {
     register,
@@ -45,6 +46,7 @@ export const Form = ({
           imgSRC={item.icon}
           custom={custom}
           selectPlaceholder={selectPlaceholder}
+          ariaLabel={ariaLabel}
         />
       ))}
       {children}

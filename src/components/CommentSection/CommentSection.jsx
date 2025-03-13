@@ -96,11 +96,14 @@ export const CommentSection = ({
           </div>
         </>
       ) : (
-        <h2>Kommentarer</h2>
+        <>
+          <h3>Du skal være logget ind for at kommentere</h3>
+          <h2>Kommentarer</h2>
+        </>
       )}
       <section>
         {commentData?.map((item) => (
-          <div className={style.displayComments}>
+          <div key={item.id} className={style.displayComments}>
             <div
               className={
                 productUserId === item.user_id ? style.left : style.right

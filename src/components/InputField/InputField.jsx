@@ -13,6 +13,7 @@ export const InputField = ({
   custom,
   selectPlaceholder,
   defaultValue,
+  ariaLabel
 }) => {
   const defaultPlaceholder = placeholder || `Indtast ${label}`;
 
@@ -41,6 +42,7 @@ export const InputField = ({
         <label htmlFor={name}>{label}</label>
         <span>
           <input
+          aria-label={ariaLabel}
             defaultValue={defaultValue}
             id={name}
             placeholder={defaultPlaceholder}

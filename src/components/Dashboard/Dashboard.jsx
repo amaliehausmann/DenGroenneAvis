@@ -3,14 +3,14 @@ import { ListingCard } from "../ListingCard/ListingCard";
 import { UserContext } from "../../context/userContext";
 import { useAPI } from "../../hooks/useAPI";
 import { UpdateUser } from "../UpdateUser/UpdateUser";
-import style from './Dashboard.module.scss'
+import style from "./Dashboard.module.scss";
 import { Splitter } from "../Splitter/Splitter";
 
 export const Dashboard = () => {
   //State til at holde styr på hvad der bliver vist
   const [showListing, setShowListings] = useState(false);
 
-  const { userData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
 
   const { apiRequest: getListings, data: listingData } = useAPI();
 
@@ -33,12 +33,35 @@ export const Dashboard = () => {
     setShowListings((prevState) => !prevState);
   }
 
+  //Function til at logge ud
+  function logOut() {
+    setUserData("");
+    sessionStorage.removeItem("userData");
+  }
+
   return (
     <section className={style.dashBoard}>
-      <Splitter/>
+      <Splitter />
+      <button onClick={logOut}>Log ud</button>
       <span className={style.buttons}>
-        <button style={{backgroundColor: showListing ? 'white' : '#1D8439', color: showListing ? '#1D8439' : 'white' }} onClick={toggleView}>Min Profil</button>
-        <button style={{backgroundColor: showListing ? '#1D8439' : 'white', color: showListing ? 'white' : '#1D8439' }}  onClick={toggleView}>Mine annoncer</button>
+        <button
+          style={{
+            backgroundColor: showListing ? "white" : "#1D8439",
+            color: showListing ? "#1D8439" : "white",
+          }}
+          onClick={toggleView}
+        >
+          Min Profil
+        </button>
+        <button
+          style={{
+            backgroundColor: showListing ? "#1D8439" : "white",
+            color: showListing ? "white" : "#1D8439",
+          }}
+          onClick={toggleView}
+        >
+          Mine annoncer
+        </button>
       </span>
 
       {showListing ? (

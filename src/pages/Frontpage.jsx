@@ -7,8 +7,13 @@ import { MissionStatement } from "../components/MissionStatement/MissionStatemen
 import { DonationSection } from "../components/DonationSection/DonationSection";
 import { useNavigate } from "react-router-dom";
 import { Splitter } from "../components/Splitter/Splitter";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export const Frontpage = () => {
+
+  //PageTitle
+  usePageTitle({ pageTitle: "Den Grønne Avis - Forside" });
+
   //data og function fra useAPI
   const { apiRequest: getProducts, data: productData } = useAPI();
   const { apiRequest: getCategories, data: categoryData } = useAPI();
@@ -39,6 +44,7 @@ export const Frontpage = () => {
   //Navigate fra useNavigate
   const navigate = useNavigate();
 
+
   return (
     <>
       <SectionWrapper>
@@ -48,9 +54,11 @@ export const Frontpage = () => {
           <GridContainer columns={6} gap={2}>
             {sixRandomProducts?.map((item) => (
               <Card
+                ariaLabel="Navigerer til siden for produktet"
                 key={item.id}
                 image={item.image}
                 title={item.name}
+                alttext={item.name}
                 custom="randomProducts"
                 action={() => navigate(`/product/${item.slug}`)}
               ></Card>
@@ -61,15 +69,15 @@ export const Frontpage = () => {
 
         <MissionStatement />
         <Splitter />
-        <section
-
-        >
+        <section>
           <h3 style={{ marginBottom: "1vw" }}>Populære Kategorier</h3>
           <GridContainer columns={6} gap={2}>
             {sixRandomCategories?.map((item) => (
               <Card
+                ariaLabel="Navigerer til kategori siden"
                 action={() => navigate(`/categories/${item.slug}`)}
                 key={item.id}
+                alttext={item.name}
                 image={item.category_image}
                 title={item.name}
                 custom="randomCategories"

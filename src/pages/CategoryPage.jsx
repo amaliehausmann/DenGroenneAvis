@@ -7,9 +7,14 @@ import { SectionWrapper } from "../components/SectionWrapper/SectionWrapper";
 import { CategoryMenu } from "../components/CategoryMenu/CategoryMenu";
 import { Splitter } from "../components/Splitter/Splitter";
 import { ItemPagination } from "../components/ItemPagination/ItemPagination";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export const CategoryPage = () => {
   const { slug } = useParams();
+
+  //PageTitle
+  usePageTitle({ pageTitle: `Kategori: ${slug} ` });
+
   const navigate = useNavigate();
 
   //State til at holde styr på pagination
@@ -58,10 +63,12 @@ export const CategoryPage = () => {
             <GridContainer columns={3} gap={2}>
               {paginatedProducts?.map((item) => (
                 <Card
+                  ariaLabel="Navigerer til siden for produktet"
                   action={() => navigate(`/product/${item.slug}`)}
                   key={item.id}
                   title={item.name}
                   image={item.image}
+                  alttext={item.name}
                   description={item.description.substring(0, 50) + "..."}
                   custom="categoryPage"
                 >

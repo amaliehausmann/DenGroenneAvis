@@ -45,6 +45,7 @@ export const Footer = () => {
               custom='newsletter'
               customButton='newsletter'
               customForm='newsletterForm'
+              ariaLabel='Tilmeld nyhedsbrev'
             />
           </section>
         )}

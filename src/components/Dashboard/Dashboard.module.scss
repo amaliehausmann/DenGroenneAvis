@@ -1,5 +1,19 @@
 @use "../../styles/variables" as *;
 .dashBoard {
+  button {
+    background-color: $green;
+    border: none;
+    padding: 1vw 3vw;
+    color: $white;
+    display: block;
+    cursor: pointer;
+    margin-left: auto;
+
+    @media screen and (max-width: 768px) {
+      padding: 2vw 6vw;
+      margin-bottom: 5vw;
+    }
+  }
   .buttons {
     width: 100%;
     display: flex;

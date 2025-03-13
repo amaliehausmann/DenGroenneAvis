@@ -73,6 +73,7 @@ export const UpdateUser = ({ listingData }) => {
   }
 
 
+
   return (
     <section className={style.updateUser}>
       {listingData && (

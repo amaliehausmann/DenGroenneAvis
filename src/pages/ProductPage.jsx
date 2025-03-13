@@ -7,9 +7,13 @@ import { useEffect } from "react";
 import { Card } from "../components/Card/Card";
 import { CommentSection } from "../components/CommentSection/CommentSection";
 import { Splitter } from "../components/Splitter/Splitter";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export const ProductPage = () => {
   const { slug } = useParams();
+
+  //PageTitle
+  usePageTitle({ pageTitle: `Produkt: ${slug}` });
   const { apiRequest: getProduct, data: productData } = useAPI();
   const productURL = `http://localhost:4242/products/${slug}`;
 
@@ -26,11 +30,12 @@ export const ProductPage = () => {
 
   return (
     <SectionWrapper>
-      <Splitter/>
+      <Splitter />
       <GridContainer columns={13} gap={2}>
         <CategoryMenu categoryId={item?.category_id} />
         {item && (
           <Card
+            alttext={item.name}
             image={item.image}
             title={item.name}
             description={item.description}
@@ -40,7 +45,7 @@ export const ProductPage = () => {
           </Card>
         )}
       </GridContainer>
-      <Splitter/>
+      <Splitter />
       <CommentSection
         user="Sælger"
         commentData={item?.comments}
