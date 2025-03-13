@@ -4,6 +4,7 @@ import { useAPI } from "../../hooks/useAPI";
 import style from "./CommentSection.module.scss";
 import { formatDate } from "../../helpers/FormatDate";
 import { UserContext } from "../../context/userContext";
+import { toast } from "react-toastify";
 
 export const CommentSection = ({
   commentData,
@@ -27,6 +28,13 @@ export const CommentSection = ({
     body.append("comment", comment);
 
     try {
+      //Fejl håndtering af tomt input
+      if (comment === "") {
+        toast.error("Felt må ikke være tomt");
+        throw new Error("Feltet må ikke være tomt");
+      }
+
+      //Poster comment
       await postComment(
         `http://localhost:4242/comment/${productId}`,
         {
@@ -76,44 +84,48 @@ export const CommentSection = ({
             Kontakt {productUserId == userData.user.id ? "køber" : "sælger"}
           </h2>
 
-         <div className={style.textArea}>
-         <textarea
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder={`Skriv en besked til ${
-              productUserId == userData.user.id ? "køber" : "sælger"
-            }...`}
-          ></textarea>
-          <Button
-            title="send"
-            action={() => createComment(productId)}
-          />
-         </div>
+          <div className={style.textArea}>
+            <textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder={`Skriv en besked til ${
+                productUserId == userData.user.id ? "køber" : "sælger"
+              }...`}
+            ></textarea>
+            <Button title="send" action={() => createComment(productId)} />
+          </div>
         </>
-      ) : ( <h2>Kommentarer</h2> )}
+      ) : (
+        <h2>Kommentarer</h2>
+      )}
       <section>
         {commentData?.map((item) => (
           <div className={style.displayComments}>
             <div
-            className={
-              productUserId === item.user_id ? style.left : style.right
-            }
-            key={item.id}
-          >
-            <h6>
-              {productUserId === item.user_id
-                ? item.user.firstname + " (Sælger)"
-                : item.user.firstname}:{" "}
-              {formatDate(item.createdAt)}
-            </h6>
-            <span><p>{item.comment}</p></span>
-            {item.user.id == userData?.user?.id && (
-              <button onClick={() => deleteAComment(item.id)}>
-                slet kommentar
-              </button>
-            )}
+              className={
+                productUserId === item.user_id ? style.left : style.right
+              }
+              key={item.id}
+            >
+              <h6>
+                {productUserId === item.user_id
+                  ? item.user.firstname + " (Sælger)"
+                  : item.user.firstname}
+                : {formatDate(item.createdAt)}
+              </h6>
+              <span>
+                <p>{item.comment}</p>
+              </span>
+              {item.user.id == userData?.user?.id && (
+                <button
+                  style={{ cursor: "pointer" }}
+                  onClick={() => deleteAComment(item.id)}
+                >
+                  slet kommentar
+                </button>
+              )}
+            </div>
           </div>
-          </div>             
         ))}
       </section>
     </section>

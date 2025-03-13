@@ -43,11 +43,12 @@
     .right,
     .left {
       width: 45%;
-      
+      display: flex;
+      flex-direction: column;
+
       span {
         border: 2px solid $green;
         width: 100%;
-        display: block;
         padding: 1vw;
         background-color: $white;
         box-sizing: border-box;
@@ -56,7 +57,7 @@
       button {
         background-color: transparent;
         border: none;
-        color: #952E0D;
+        color: #952e0d;
       }
     }
 
@@ -66,6 +67,44 @@
 
     .left {
       margin-right: auto;
+    }
+  }
+
+  @media screen and (max-width: 1300px) {
+    padding: 2vw 8vw;
+  }
+
+  @media screen and (max-width: 1050px) {
+    padding: 2vw 6vw;
+
+    .textArea {
+      textarea {
+        height: 18vw;
+        padding: 2vw;
+      }
+
+      button {
+        padding: 2vw 4vw;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 2vw 4vw;
+
+    h2 {
+      margin-bottom: 6vw;
+    }
+
+    .textArea {
+      textarea {
+        height: 25vw;
+        padding: 2vw;
+      }
+
+      button {
+        padding: 3vw 6vw;
+      }
     }
   }
 }

@@ -9,4 +9,23 @@
             padding: 0.2vw 0;
         }
     }
+
+    @media screen and (max-width: 1300px){
+        margin-left: -12vw;
+    }
+
+    @media screen and (max-width: 1050px){
+        margin-left: -10vw;
+    }
+
+    @media screen and (max-width: 768px){
+        margin-left: 0;
+        margin-bottom: 4vw;
+
+        ul{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 0;
+        }
+    }
 }

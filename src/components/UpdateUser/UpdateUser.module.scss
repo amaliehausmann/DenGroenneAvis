@@ -34,8 +34,12 @@
           border: none;
           margin-left: auto;
           padding: 1vw;
-          width: 10vw;
+          width: 14vw;
           cursor: pointer;
+
+          &:hover {
+            background-color: #d64717;
+          }
         }
 
         input {
@@ -45,7 +49,12 @@
           color: white;
           border: none;
           padding: 1vw;
+          width: 14vw;
           cursor: pointer;
+
+          &:hover {
+            background-color: #2bc253;
+          }
         }
       }
 
@@ -68,6 +77,16 @@
             aspect-ratio: 1/1;
             border: 2px solid green;
 
+            @media screen and (max-width: 1300px) {
+              width: 20px;
+              height: 20px;
+            }
+
+            @media screen and (max-width: 1050px) {
+              width: 18px;
+              height: 18px;
+            }
+
             cursor: pointer;
             position: relative;
             background-color: white;
@@ -80,6 +99,28 @@
             &:checked::before {
               content: "";
             }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+
+      div {
+        .bottomButtons {
+          position: static;
+          margin-top: 10vw;
+          gap: 5vw;
+
+          button {
+            width: 30%;
+            padding: 2vw;
+          }
+
+          input {
+            width: 30%;
+            padding: 2vw;
           }
         }
       }

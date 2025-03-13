@@ -3,54 +3,131 @@
 .headerStyling {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: $white;
   padding: 2vw 6vw;
-  align-items: center;
-  
 
   .heading {
-    cursor: pointer;
     display: flex;
+    cursor: pointer;
     border: 2px solid $green;
-    h1{
+
+    h1 {
       font-weight: 400;
       padding: 0 0.5vw;
-    }
-    h1:nth-of-type(1) {
-      background-color: $green;
-      color: white;
-    }
 
-    h1:nth-of-type(2) {
-      color: $green;
+      &:first-of-type {
+        background-color: $green;
+        color: $white;
+      }
+
+      &:last-of-type {
+        color: $green;
+      }
     }
   }
 
-  section{
+  section {
     display: flex;
     gap: 2vw;
 
-    select{
+    select {
       border: 2px solid $bluegreen;
-      padding-right: 4vw;
-      padding-left: 0.5vw;
       background-color: $lightgrey;
+      padding: 0 4vw 0 0.5vw;
     }
 
-    button{
+    button {
       padding: 1vw 2vw;
+      background-color: $bluegreen;
+      border: none;
+      color: $white;
+      transition: background-color 0.3s ease;
 
-      &:hover{
+      &:hover {
         background-color: $green;
       }
     }
 
-    span{
+    span {
       display: flex;
       gap: 1vw;
 
-      img{
+      img {
         width: 2vw;
+      }
+    }
+  }
+
+  // Responsive Styles
+  @media screen and (max-width: 1300px) {
+    padding: 2vw 4vw;
+
+    section {
+      select {
+        padding-right: 5vw;
+      }
+
+      button {
+        padding: 1vw 2.5vw;
+      }
+
+      span img {
+        width: 2.5vw;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1050px) {
+    padding: 2vw;
+
+    section {
+      gap: 4vw;
+
+      select {
+        padding-right: 5vw;
+      }
+
+      button {
+        padding: 1vw 2.5vw;
+      }
+
+      span {
+        gap: 1.5vw;
+
+        img {
+          width: 4vw;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 4vw 2vw;
+
+    .heading {
+      display: none;
+    }
+
+    section {
+      gap: 0;
+      width: 100%;
+      justify-content: space-between;
+
+      select {
+        padding-right: 8vw;
+      }
+
+      button {
+        padding: 2vw 4vw;
+      }
+
+      span {
+        gap: 2vw;
+
+        img {
+          width: 6vw;
+        }
       }
     }
   }

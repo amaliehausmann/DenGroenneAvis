@@ -72,7 +72,6 @@ export const UpdateUser = ({ listingData }) => {
     }
   }
 
-  console.log(userData);
 
   return (
     <section className={style.updateUser}>

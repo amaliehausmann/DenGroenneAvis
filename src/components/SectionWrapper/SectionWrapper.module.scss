@@ -1,6 +1,18 @@
 //Basestyling
 .sectionStyling{
     padding: 2vw 10vw;
-}
+    min-height: 60vh;
 
-//Custom Styling
+    @media screen and (max-width: 1300px){
+        padding: 2vw 8vw;
+        min-height: 70vh;
+    }
+
+    @media screen and (max-width: 1050px){
+        padding: 2vw 6vw;
+    }
+
+    @media screen and (max-width: 768px){
+        padding: 2vw 4vw;
+    }
+}

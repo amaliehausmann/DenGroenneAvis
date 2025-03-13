@@ -1,17 +1,4 @@
 export const updateUserForm = [
-    {
-        name: "email",
-        label: "Email",
-        type: "email",
-        placeholder: 'Din email...',
-        validation: {
-          required: "Email er påkrævet",
-          pattern: {
-            value: /^[a-zAZ0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            message: "Email skal være en rigtig email",
-          },
-        },
-      },
       {
         name: "firstname",
         label: "Fornavn",
@@ -82,6 +69,19 @@ export const updateUserForm = [
           pattern: {
             value: /^[0-9]{4,5}$/,
             message: "Postnummer skal være 4 eller 5 tegn",
+          },
+        },
+      },
+      {
+        name: "email",
+        label: "Email",
+        type: "email",
+        placeholder: 'Din email...',
+        validation: {
+          required: "Email er påkrævet",
+          pattern: {
+            value: /^[a-zAZ0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: "Email skal være en rigtig email",
           },
         },
       },

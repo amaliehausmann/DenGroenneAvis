@@ -1,15 +1,33 @@
-@use '../../styles/variables' as *;
-.dashBoard{
-    .buttons{
-        width: 100%;
-        display: flex;
-        button{
-            width: 100%;
-            border: 2px solid $green;
-            padding: 1vw;
-            font-size: 1.5vw;
-        }
-        padding-bottom: 5vw;
-        padding-top: 3vw;
+@use "../../styles/variables" as *;
+.dashBoard {
+  .buttons {
+    width: 100%;
+    display: flex;
+    button {
+      width: 100%;
+      border: 2px solid $green;
+      padding: 1vw;
+      font-size: 1.5vw;
     }
+    padding-bottom: 5vw;
+    padding-top: 3vw;
+
+    @media screen and (max-width: 1300px) {
+      button {
+        font-size: 1.8vw;
+      }
+    }
+
+    @media screen and (max-width: 1050px) {
+      button {
+        font-size: 2vw;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      button {
+        font-size: 4vw;
+      }
+    }
+  }
 }

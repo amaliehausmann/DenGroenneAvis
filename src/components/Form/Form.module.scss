@@ -4,19 +4,39 @@
   display: flex;
 }
 
-.newsletter {
+// button styles
+.button {
   background-color: $green;
   border: none;
   color: $white;
-  padding: 0.5vw 2vw;
 }
 
+// Newsletter button
+.newsletter {
+  @extend .button;
+  height: 3.3vw;
+  padding: 0 2vw;
+
+  @media screen and (max-width: 1050px) {
+    height: 3.4vw;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 7.3vw;
+  }
+}
+
+// login og signup forms
 .login,
 .signup {
   flex-direction: column;
   position: relative;
   padding-bottom: 6vw;
   margin-bottom: 2vw;
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: 14vw;
+  }
 
   h5 {
     align-self: flex-start;
@@ -29,17 +49,21 @@
   }
 }
 
+// Buttons til login og signup
 .loginButton,
 .signupButton {
+  @extend .button;
   padding: 0.5vw 2.5vw;
-  background-color: $green;
-  border: none;
-  color: $white;
   position: absolute;
   right: 0;
   bottom: 0;
+
+  @media screen and (max-width: 768px) {
+    padding: 2vw 3vw;
+  }
 }
 
+// Signup checkbox section
 .signup div:last-of-type {
   position: absolute;
   bottom: 0;
@@ -58,19 +82,22 @@
     cursor: pointer;
     margin-right: 1vw !important;
 
+    @media screen and (max-width: 768px) {
+      width: 3vw;
+      height: 3vw;
+    }
+
     &:checked {
       background-color: green;
     }
   }
 
   p {
-    margin-bottom: -1.5vw;
-    margin-left: 2.5vw;
-    display: block;
-    margin-right: auto;
+    margin: -1.5vw auto 0 2.5vw;
   }
 }
 
+// Listing form
 .listingForm {
   flex-direction: column;
   justify-content: center;
@@ -81,15 +108,22 @@
     padding: 1vw;
     width: 100%;
     background-color: #edecec;
+
+    @media screen and (max-width: 768px) {
+      padding: 3vw 1vw;
+    }
   }
 
   .listingButton {
-    background-color: $green;
-    color: white;
+    @extend .button;
     margin-left: auto;
     display: block;
     padding: 1vw 4vw;
-    border: none;
     margin-top: 1vw;
+
+    @media screen and (max-width: 768px) {
+      padding: 2vw 6vw;
+      margin-top: 3vw;
+    }
   }
 }

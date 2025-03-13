@@ -18,4 +18,46 @@
   h3 {
     padding: 0 17vw;
   }
+
+  @media screen and (max-width: 1300px) {
+    padding: 4vw 0;
+    margin: 4vw 0;
+
+    h1,
+    h3 {
+      margin: 2vw;
+    }
+
+    h3 {
+      padding: 0 14vw;
+    }
+  }
+
+  @media screen and (max-width: 1050px) {
+    padding: 6vw 0;
+    margin: 5vw 0;
+
+    h1,
+    h3 {
+      margin: 3vw;
+    }
+
+    h3 {
+      padding: 0 14vw;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 20vw 0;
+    margin: 6vw 0;
+
+    h1,
+    h3 {
+      margin: 3vw;
+    }
+
+    h3 {
+      padding: 0 8vw;
+    }
+  }
 }
