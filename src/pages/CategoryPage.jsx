@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAPI } from "../hooks/useAPI";
 import { useNavigate, useParams } from "react-router-dom";
 import { GridContainer } from "../components/GridContainer/GridContainer";
@@ -6,11 +6,17 @@ import { Card } from "../components/Card/Card";
 import { SectionWrapper } from "../components/SectionWrapper/SectionWrapper";
 import { CategoryMenu } from "../components/CategoryMenu/CategoryMenu";
 import { Splitter } from "../components/Splitter/Splitter";
+import { ItemPagination } from "../components/ItemPagination/ItemPagination";
 
 export const CategoryPage = () => {
   const { slug } = useParams();
-
   const navigate = useNavigate();
+
+  //State til at holde styr på pagination
+  const [currentPage, setCurrentPage] = useState(1);
+
+  //Definerer max produkter per side
+  const maxItemsPerPage = 9;
 
   //Functions og data fra useAPI
   const {
@@ -19,7 +25,6 @@ export const CategoryPage = () => {
   } = useAPI();
 
   //URLs
-  const categoryURL = "http://localhost:4242/categories";
   const productsFromCategoryURL = `http://localhost:4242/products/category/${slug}`;
 
   //Henter produkter ud fra kategorien
@@ -32,27 +37,43 @@ export const CategoryPage = () => {
     );
   }, [productsFromCategoryURL]);
 
+  //Beregner det totale antal sider
+  const totalPages = Math.ceil(
+    (productsFromCategoryData?.data?.length || 0) / maxItemsPerPage
+  );
+
+  //Slice produkter baseret på den nuværende side
+  const paginatedProducts = productsFromCategoryData?.data?.slice(
+    (currentPage - 1) * maxItemsPerPage,
+    currentPage * maxItemsPerPage
+  );
+
   return (
     <>
       <SectionWrapper>
-        <Splitter/>
+        <Splitter />
         <GridContainer columns={13} gap={2}>
           <CategoryMenu slug={slug} />
           <section>
             <GridContainer columns={3} gap={2}>
-              {productsFromCategoryData?.data?.map((item) => (
+              {paginatedProducts?.map((item) => (
                 <Card
                   action={() => navigate(`/product/${item.slug}`)}
                   key={item.id}
                   title={item.name}
                   image={item.image}
-                  description={item.description.substring(0, 50)+'...'}
-                  custom='categoryPage'
+                  description={item.description.substring(0, 50) + "..."}
+                  custom="categoryPage"
                 >
                   <h5>Pris: {item.price} kr</h5>
                 </Card>
               ))}
             </GridContainer>
+            <ItemPagination
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              totalPages={totalPages}
+            />
           </section>
         </GridContainer>
       </SectionWrapper>

@@ -1,0 +1,11 @@
+.itemPagination {
+  display: flex;
+  margin-top: 3vw;
+  justify-content: flex-end;
+  gap: 2vw;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    gap: 8vw;
+  }
+}
