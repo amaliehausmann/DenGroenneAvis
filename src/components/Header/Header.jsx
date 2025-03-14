@@ -6,7 +6,6 @@ import { UserContext } from "../../context/userContext";
 import { toast } from "react-toastify";
 
 export const Header = () => {
-
   //Trækker data og function ud af hook
   const { apiRequest, data } = useAPI();
 
@@ -29,6 +28,7 @@ export const Header = () => {
     if (userData) {
       navigate("/createPost");
     } else {
+      //Toast besked hvis man ikke er logget ind
       toast.error("Du skal være logget ind for at oprette en annonce");
     }
   }
@@ -43,7 +43,7 @@ export const Header = () => {
 
         <section>
           <select
-          aria-label="Vælg kategori"
+            aria-label="Vælg kategori"
             style={{ cursor: "pointer" }}
             onChange={(e) => navigate(`/categories/${e.target.value}`)}
             value={""}
@@ -63,7 +63,8 @@ export const Header = () => {
           <span>
             <img src="/importantMail.svg" alt="mail icon" />
             <img src="/infosquare.svg" alt="info icon" />
-            <img aria-label="Linker til login/min profil side"
+            <img
+              aria-label="Linker til login/min profil side"
               style={{ cursor: "pointer" }}
               onClick={() => navigate("/login")}
               src="/user.svg"

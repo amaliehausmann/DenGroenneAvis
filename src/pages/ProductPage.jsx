@@ -14,13 +14,19 @@ export const ProductPage = () => {
 
   //PageTitle
   usePageTitle({ pageTitle: `Produkt: ${slug}` });
+
+  //Henter function fra useAPI
   const { apiRequest: getProduct, data: productData } = useAPI();
+
+  //URL
   const productURL = `http://localhost:4242/products/${slug}`;
 
+  //fetcher produkter
   useEffect(() => {
     getProduct(productURL);
   }, [productURL]);
 
+  //Destructure productData
   const item = productData?.data;
 
   // Function som refetcher productData

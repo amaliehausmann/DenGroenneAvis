@@ -2,7 +2,7 @@ export const NewsletterForm = [
   {
     name: "newsletteremail",
     type: "email",
-    placeholder: ' ',
+    placeholder: " ",
     validation: {
       required: "Email er påkrævet",
       pattern: {
@@ -11,5 +11,4 @@ export const NewsletterForm = [
       },
     },
   },
-  
 ];

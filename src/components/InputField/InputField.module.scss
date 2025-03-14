@@ -7,7 +7,7 @@
   height: 3vw;
   margin-bottom: 4vw;
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     height: 6.4vw;
     margin-bottom: 8vw;
   }
@@ -18,7 +18,8 @@
   }
 }
 
-.loginInput, .signupInput {
+.loginInput,
+.signupInput {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -36,7 +37,7 @@
       padding: 1vw 30vw 1vw 1vw;
       width: 100%;
       border: 2px solid $bluegreen;
-      background-color: #EDECEC;
+      background-color: #edecec;
     }
 
     img {
@@ -48,40 +49,37 @@
     }
   }
 
-      @media screen and (max-width: 768px){
-        span{
-                
-      img{
+  @media screen and (max-width: 768px) {
+    span {
+      img {
         width: 6vw;
       }
 
-      input{
+      input {
         padding: 3vw 30vw 3vw 3vw;
       }
-        }
     }
+  }
 }
 
-.listingInput{
+.listingInput {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 1vw;
   margin-top: 1vw;
 
-
-  span{
-    input{
+  span {
+    input {
       width: 100%;
       padding: 1vw 1vw;
       border: 2px solid $green;
       box-sizing: border-box;
-      background-color: #EDECEC;
+      background-color: #edecec;
 
-      @media screen and (max-width: 768px){
+      @media screen and (max-width: 768px) {
         padding: 3vw 2vw;
       }
     }
   }
 }
-

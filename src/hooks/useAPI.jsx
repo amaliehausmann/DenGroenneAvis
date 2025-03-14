@@ -16,6 +16,7 @@ export const useAPI = () => {
     unauthorizedMessage
   ) => {
     try {
+      //Spread-operator gør det nemt at overskrive eller tilføje til options hvis nødvendigt
       const response = await fetch(url, { ...options });
 
       //Hvis response er unauthorized vises en unauthorizedMessage

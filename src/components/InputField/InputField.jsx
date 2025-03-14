@@ -5,32 +5,38 @@ export const InputField = ({
   label,
   type = "text",
   placeholder,
-  register,
-  validation,
+  register, //Funktion fra React Hook Form til at registrere input
+  validation, //Valideringsfejl
   error,
   options = [],
   imgSRC,
   custom,
   selectPlaceholder,
   defaultValue,
-  ariaLabel
+  ariaLabel, //Accesibility
 }) => {
+  //Standard placeholder
   const defaultPlaceholder = placeholder || `Indtast ${label}`;
 
   // Hvis typen er checkbox
   if (type === "checkbox") {
     return (
-      <div style={{display: 'flex', flexDirection: 'column'}} className={style.InputStyling}>
-        <div style={{display: 'flex'}}>
-        <input
-          id={name}
-          type="checkbox"
-          {...register(name, validation)}
-          style={{marginRight: '0.5vw'}}
-        />
-        <label htmlFor={name}>{label}</label>
+      <div
+        style={{ display: "flex", flexDirection: "column" }}
+        className={style.InputStyling}
+      >
+        <div style={{ display: "flex" }}>
+          <input
+            id={name}
+            type="checkbox"
+            {...register(name, validation)}
+            style={{ marginRight: "0.5vw" }}
+          />
+          <label htmlFor={name}>{label}</label>
         </div>
-        {error && <p style={{ color: "orange", marginTop: '0.5vw' }}>{error.message}</p>}
+        {error && (
+          <p style={{ color: "orange", marginTop: "0.5vw" }}>{error.message}</p>
+        )}
       </div>
     );
   }
@@ -42,7 +48,7 @@ export const InputField = ({
         <label htmlFor={name}>{label}</label>
         <span>
           <input
-          aria-label={ariaLabel}
+            aria-label={ariaLabel}
             defaultValue={defaultValue}
             id={name}
             placeholder={defaultPlaceholder}

@@ -4,7 +4,7 @@ import { useAPI } from "../../hooks/useAPI";
 import { listingForm } from "../../utils/ListingForm";
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
-import style from './CreateListing.module.scss'
+import style from "./CreateListing.module.scss";
 
 export const CreateListing = () => {
   //Henter function og data fra useAPI()
@@ -59,7 +59,11 @@ export const CreateListing = () => {
   async function postListing(data) {
     const body = new URLSearchParams();
     body.append("name", data.title);
-    body.append("image", data.url || 'https://hjerm-byg.dk/wp-content/uploads/2021/03/intet-billede.jpg');
+    body.append(
+      "image",
+      data.url ||
+        "https://hjerm-byg.dk/wp-content/uploads/2021/03/intet-billede.jpg" //Hvis brugeren ikke sender en url med
+    );
     body.append("description", data.description);
     body.append("price", data.price);
     body.append("category_id", data.category);
@@ -71,10 +75,10 @@ export const CreateListing = () => {
         {
           method: "POST",
           body: body,
-          headers: { Authorization: `Bearer ${userData?.access_token}` },
+          headers: { Authorization: `Bearer ${userData?.access_token}` }, //Token
         },
-        "Annonce oprettet",
-        "Der skete en fejl, prøv igen senere"
+        "Annonce oprettet", //Success message
+        "Der skete en fejl, prøv igen senere" //error message
       );
 
       //Navigerer brugeren til login-siden efter oprettelse
@@ -97,9 +101,9 @@ export const CreateListing = () => {
         selectPlaceholder="Hvilken kategori tilhører dit produkt..."
         buttonText="Opret"
         callback={postListing}
-        customForm='listingForm'
-        custom='listingInput'
-        customButton='listingButton'
+        customForm="listingForm"
+        custom="listingInput"
+        customButton="listingButton"
       />
     </div>
   );

@@ -7,6 +7,7 @@ import { Frontpage } from "./pages/Frontpage";
 import { CreatePost } from "./pages/CreatePost";
 import { CategoryPage } from "./pages/CategoryPage";
 import { ProductPage } from "./pages/ProductPage";
+import { PageNotFound } from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -15,11 +16,15 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<MainLayout />}>
-            <Route index element={<Frontpage/>}></Route>
-            <Route path="/login" element={<Login/>}></Route>
-            <Route path="/createPost" element={<CreatePost/>}></Route>
-            <Route path="/categories/:slug" element={<CategoryPage/>}></Route>
-            <Route path="/product/:slug" element={<ProductPage/>}></Route>
+              <Route index element={<Frontpage />}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/createPost" element={<CreatePost />}></Route>
+              <Route
+                path="/categories/:slug"
+                element={<CategoryPage />}
+              ></Route>
+              <Route path="/product/:slug" element={<ProductPage />}></Route>
+              <Route path="/*" element={<PageNotFound />} />
             </Route>
           </Routes>
         </BrowserRouter>

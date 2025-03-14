@@ -15,6 +15,7 @@ export const CategoryPage = () => {
   //PageTitle
   usePageTitle({ pageTitle: `Kategori: ${slug} ` });
 
+  //navigate fra useNavigate
   const navigate = useNavigate();
 
   //State til at holde styr på pagination

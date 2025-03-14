@@ -10,7 +10,6 @@ import { Splitter } from "../components/Splitter/Splitter";
 import { usePageTitle } from "../hooks/usePageTitle";
 
 export const Frontpage = () => {
-
   //PageTitle
   usePageTitle({ pageTitle: "Den Grønne Avis - Forside" });
 
@@ -21,29 +20,28 @@ export const Frontpage = () => {
   const productURL = "http://localhost:4242/products";
   const categoryURL = "http://localhost:4242/categories";
 
-  //Get products
+  //Ftecher produkter
   useEffect(() => {
     getProducts(productURL);
   }, [productURL]);
 
-  //Get categories
+  //fetcher kategorier
   useEffect(() => {
     getCategories(categoryURL);
   }, [categoryURL]);
 
-  //Get 6 random products
+  //få 6 tilfældige produkter
   const sixRandomProducts = productData?.data
     ?.sort(() => Math.random() - 0.5)
     .slice(0, 6);
 
-  //Get 6 random categories
+  //få 6 tilfældige kategorier
   const sixRandomCategories = categoryData?.data
     ?.sort(() => Math.random() - 0.5)
     .slice(0, 6);
 
   //Navigate fra useNavigate
   const navigate = useNavigate();
-
 
   return (
     <>

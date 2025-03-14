@@ -1,7 +1,9 @@
-import style from './SectionWrapper.module.scss'
+import style from "./SectionWrapper.module.scss";
 
-export const SectionWrapper = ({children, customStyling}) => {
+export const SectionWrapper = ({ children, customStyling }) => {
   return (
-    <section className={`${style.sectionStyling} ${style[customStyling]}`}>{children}</section>
-  )
-}
+    <section className={`${style.sectionStyling} ${style[customStyling]}`}>
+      {children}
+    </section>
+  );
+};

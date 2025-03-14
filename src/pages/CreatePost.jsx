@@ -6,7 +6,7 @@ import { usePageTitle } from "../hooks/usePageTitle";
 export const CreatePost = () => {
   //PageTitle
   usePageTitle({ pageTitle: "Den Grønne Avis - Opret Annonce" });
-  
+
   return (
     <SectionWrapper>
       <Splitter />

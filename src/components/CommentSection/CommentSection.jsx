@@ -40,10 +40,10 @@ export const CommentSection = ({
         {
           method: "POST",
           body: body,
-          headers: { Authorization: `Bearer ${userData?.access_token}` },
+          headers: { Authorization: `Bearer ${userData?.access_token}` }, //Token
         },
-        "Besked sendt",
-        "Noget gik galt, prøv igen senere"
+        "Besked sendt", //Success message
+        "Noget gik galt, prøv igen senere" //Error message
       );
 
       // Trigger en refetch af product data
@@ -63,10 +63,10 @@ export const CommentSection = ({
         `http://localhost:4242/comment/${id}`,
         {
           method: "DELETE",
-          headers: { Authorization: `Bearer ${userData?.access_token}` },
+          headers: { Authorization: `Bearer ${userData?.access_token}` }, //Token
         },
-        "Kommentar slettet",
-        "Noget gik galt, prøv igen senere"
+        "Kommentar slettet", //Success message
+        "Noget gik galt, prøv igen senere" //Error message
       );
 
       // Trigger en refetch af product data
@@ -81,7 +81,7 @@ export const CommentSection = ({
       {userData ? (
         <>
           <h2>
-            Kontakt {productUserId == userData.user.id ? "køber" : "sælger"}
+            Kontakt {productUserId == userData?.user.id ? "køber" : "sælger"}
           </h2>
 
           <div className={style.textArea}>
@@ -89,7 +89,7 @@ export const CommentSection = ({
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder={`Skriv en besked til ${
-                productUserId == userData.user.id ? "køber" : "sælger"
+                productUserId == userData?.user.id ? "køber" : "sælger"
               }...`}
             ></textarea>
             <Button title="send" action={() => createComment(productId)} />

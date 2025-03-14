@@ -8,25 +8,28 @@ import { ToastContainer, Bounce, toast } from "react-toastify";
 import { UserContext } from "../../context/userContext";
 
 export const Footer = () => {
-
+  //Henter userData fra userContext
   const { userData } = useContext(UserContext);
 
-  const {apiRequest: patchRequest} = useAPI();
+  //Henter function til at opdatere brugeroplysninger
+  const { apiRequest: patchRequest } = useAPI();
 
-    //Function til at håndtere signup
-    function newsletterSignUp() {
-      const body = new URLSearchParams()
-      body.append('hasNewsletter', true)
-  
-      patchRequest('http://localhost:4242/users', {
-        method: 'PATCH',
+  //Function til at håndtere signup
+  function newsletterSignUp() {
+    const body = new URLSearchParams();
+    body.append("hasNewsletter", true);
+
+    patchRequest(
+      "http://localhost:4242/users",
+      {
+        method: "PATCH",
         body: body,
-        headers: { Authorization: `Bearer ${userData?.access_token}` },
+        headers: { Authorization: `Bearer ${userData?.access_token}` }, //Token
       },
-      'Du er nu tilmeldt nyhedsbrevet',
-      'Noget gik galt, prøv igen senere',
-    )
-    }
+      "Du er nu tilmeldt nyhedsbrevet", //Success message
+      "Noget gik galt, prøv igen senere" //Error message
+    );
+  }
 
   return (
     <footer className={style.footerStyling}>
@@ -42,10 +45,10 @@ export const Footer = () => {
               callback={newsletterSignUp}
               buttonText="Tilmeld"
               formArray={NewsletterForm}
-              custom='newsletter'
-              customButton='newsletter'
-              customForm='newsletterForm'
-              ariaLabel='Tilmeld nyhedsbrev'
+              custom="newsletter"
+              customButton="newsletter"
+              customForm="newsletterForm"
+              ariaLabel="Tilmeld nyhedsbrev"
             />
           </section>
         )}

@@ -11,7 +11,7 @@ export const Form = ({
   customForm,
   customButton,
   selectPlaceholder,
-  ariaLabel
+  ariaLabel,
 }) => {
   const {
     register,

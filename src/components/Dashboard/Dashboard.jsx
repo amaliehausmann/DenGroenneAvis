@@ -10,18 +10,23 @@ export const Dashboard = () => {
   //State til at holde styr på hvad der bliver vist
   const [showListing, setShowListings] = useState(false);
 
+  //Henter userData og setUserData fra userContext
   const { userData, setUserData } = useContext(UserContext);
 
+  //Henter function og Data fra useAPI
   const { apiRequest: getListings, data: listingData } = useAPI();
 
+  //URL
   const listingURL = "http://localhost:4242/users";
 
+  //useEffect til at hente listings
   useEffect(() => {
     getListings(listingURL, {
       headers: { Authorization: `Bearer ${userData?.access_token}` },
     });
   }, [listingURL]);
 
+  //Function til at refetche data
   function refetchData() {
     getListings(listingURL, {
       headers: { Authorization: `Bearer ${userData?.access_token}` },

@@ -6,9 +6,10 @@ import { Dashboard } from "../components/Dashboard/Dashboard";
 import { usePageTitle } from "../hooks/usePageTitle";
 
 export const Login = () => {
+  //Henter userData fra userContext
   const { userData } = useContext(UserContext);
 
-  //PageTitle
+  //PageTitle, hvis brugeren er logget ind vil den sige min profil i stedet
   usePageTitle({ pageTitle: userData ? `Min profil ` : "Login" });
   return (
     <SectionWrapper>

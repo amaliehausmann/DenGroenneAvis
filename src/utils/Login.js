@@ -3,8 +3,8 @@ export const loginForm = [
     name: "email",
     label: "Email",
     type: "email",
-    icon: 'email.svg',
-    placeholder: 'Din email...',
+    icon: "email.svg",
+    placeholder: "Din email...",
     validation: {
       required: "Email er påkrævet",
       pattern: {
@@ -17,8 +17,8 @@ export const loginForm = [
     name: "password",
     label: "Password",
     type: "password",
-    icon: 'password.svg',
-    placeholder: 'Dit password...',
+    icon: "password.svg",
+    placeholder: "Dit password...",
     validation: {
       required: "Password er påkrævet",
       minLength: { value: 8, message: "Password skal være mindst 8 tegn" },

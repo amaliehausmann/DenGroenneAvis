@@ -11,20 +11,21 @@ import style from "./UpdateUser.module.scss";
 export const UpdateUser = ({ listingData }) => {
   //Henter de nødvendige states og functions fra react-hook-form
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
+    register, //funktion til at registrere inputfelter
+    handleSubmit, //Funktion til at håndtere et submit
+    formState: { errors }, //Objekt med valideringsfejl
   } = useForm({
-    mode: "onChange",
-    defaultValues: listingData,
+    mode: "onChange", //Formularen valideres onChange
+    defaultValues: listingData, //Forudfylder formularen med eksisterende data
   });
 
-  //Henter userData
+  //Henter userData fra userContext
   const { userData, setUserData } = useContext(UserContext);
 
-  //Henter function fra useAPI()
+  //Henter function til at opdatere bruger data fra useAPI()
   const { apiRequest: updateUser } = useAPI();
 
+  // Funktion til at opdatere brugerens oplysninger
   function updateUserInfo(data) {
     const body = new URLSearchParams();
     body.append("email", data.email);
@@ -36,50 +37,55 @@ export const UpdateUser = ({ listingData }) => {
     body.append("hasNewsletter", data.hasNewsletter);
     body.append("hasNotification", data.hasNotification);
 
+    //Sender PATCH request med de opdaterede brugeroplysninger
     updateUser(
       "http://localhost:4242/users",
       {
         method: "PATCH",
         body: body,
-        headers: { Authorization: `Bearer ${userData?.access_token}` },
+        headers: { Authorization: `Bearer ${userData?.access_token}` }, //token
       },
-      "Profil opdateret",
-      "Der skete en fejl, prøv igen senere"
+      "Profil opdateret", //Success message
+      "Der skete en fejl, prøv igen senere" //Error message
     );
   }
 
+  //Henter funktion til at slette en bruger
   const { apiRequest: deleteUser } = useAPI();
 
+  //Hook til at navigere brugeren
   const navigate = useNavigate();
 
+  //Funktion til at slette en bruger
   async function deleteCurrentUser() {
     try {
       await deleteUser(
         "http://localhost:4242/users",
         {
           method: "DELETE",
-          headers: { Authorization: `Bearer ${userData?.access_token}` },
+          headers: { Authorization: `Bearer ${userData?.access_token}` }, //Token
         },
-        "Bruger er nu slettet",
-        "Der skete en fejl, prøv igen senere"
+        "Bruger er nu slettet", //Success message
+        "Der skete en fejl, prøv igen senere" //Error message
       );
+      //Nulstiller userData og fjerner sessionStorage
       setUserData("");
       sessionStorage.removeItem("userData");
+
+      //Navigerer brugeren til forsiden
       navigate("/");
+
+      //Toast til at informere brugeren om sletning
       toast.info("Profil slettet");
     } catch (error) {
       console.error("Fejl i sletning af bruger", error);
     }
   }
 
-
-
   return (
     <section className={style.updateUser}>
       {listingData && (
-        <form
-          onSubmit={handleSubmit(updateUserInfo)}
-        >
+        <form onSubmit={handleSubmit(updateUserInfo)}>
           <div>
             {updateUserForm?.map((item) => (
               <InputField
@@ -91,7 +97,7 @@ export const UpdateUser = ({ listingData }) => {
                 register={register}
                 validation={item.validation}
                 error={errors[item.name]}
-                defaultValue={listingData?.[item.name]}
+                defaultValue={listingData?.[item.name]} //Setter defaultValue baseret på listingData
               />
             ))}
           </div>
@@ -109,10 +115,10 @@ export const UpdateUser = ({ listingData }) => {
               />
             ))}
             <span className={style.bottomButtons}>
-            <button onClick={deleteCurrentUser} type="button">
-              slet profil
-            </button>
-            <input type="submit" value="gem ændringer" />
+              <button onClick={deleteCurrentUser} type="button">
+                slet profil
+              </button>
+              <input type="submit" value="gem ændringer" />
             </span>
           </div>
         </form>
